@@ -1,4 +1,7 @@
 # starbuzz.py
+# Author: Roberto D'Auria
+
+# Read the beans' price from a website and print it only when it's below $4.74
 import time 
 import urllib.request
 

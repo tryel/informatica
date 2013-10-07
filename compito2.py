@@ -1,4 +1,7 @@
 # compito2.py
+# Author: Roberto D'Auria
+
+# Works without using the len() function
 
 city = input("Inserisci la città di nascita: ") # len(city) <= 20
 i = 0

@@ -1,3 +1,6 @@
+# compito1.py
+# Author: Roberto D'Auria
+
 n = 0
 secret = 5
 while n != secret:

@@ -1,4 +1,7 @@
 # urllib-ilmeteo.py
+# Author: Roberto D'Auria
+
+# Read the current temperature for Perugia on ilmeteo.it (if available) and print it
 
 import urllib.request
 

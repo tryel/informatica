@@ -1,3 +1,6 @@
+# number.py
+# Author: Roberto D'Auria
+
 n = int(input("Numero? "))
 
 if n == 5:

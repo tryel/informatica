@@ -1,4 +1,8 @@
 # compito2-len.py
+# Author: Roberto D'Auria
+
+# Works using the len() function, which gives the length of a given object
+# i.e. len("foo") is 3
 
 city = input("Inserisci la città di nascita: ") # len(city) <= 20
 i = 0
