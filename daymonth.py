@@ -8,4 +8,4 @@ month = input("Che mese sei nato? ")
 
 print(day + month)
 
-print(int(day) + int(month)	)
+print(int(day) + int(month)    )

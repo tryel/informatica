@@ -23,6 +23,6 @@ start_pos = text.find(find_start)
 temp = text[start_pos-2:start_pos]
 
 if temp:
-	print("Ultima temperatura rilevata a Perugia: " + temp + "°C")
+    print("Ultima temperatura rilevata a Perugia: " + temp + "°C")
 else:
-	print("Nessuna rilevazione della temperatura disponibile")
+    print("Nessuna rilevazione della temperatura disponibile")
