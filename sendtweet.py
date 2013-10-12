@@ -10,10 +10,7 @@ CONSUMER_KEY = ""
 CONSUMER_SECRET = ""
 
 tw = Twitter(
-        auth=OAuth(OAUTH_TOKEN, OAUTH_SECRET,
-                   CONSUMER_KEY, CONSUMER_SECRET)
-        )
+    auth=OAuth(OAUTH_TOKEN, OAUTH_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
+)
 
-tw.statuses.update(
-        status="It works!"
-        )
+tw.statuses.update(status="It works!")
