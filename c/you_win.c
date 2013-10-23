@@ -13,12 +13,14 @@ int main(){
         printf("Inserisci un numero: ");
         scanf("%d", &n);
 
-        vinto = hai_vinto(n);
+        if (n) {
+            vinto = hai_vinto(n);
 
-        if (vinto && n)
-            printf("Hai vinto\n");
-        if (!vinto && n)
-            printf("Hai perso\n");
+            if (vinto)
+                printf("Hai vinto\n");
+            else
+                printf("Hai perso\n");
+        }
     } while(n != 0);
 
     return 0;
