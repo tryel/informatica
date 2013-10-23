@@ -1,6 +1,7 @@
 int main(){
-    int card = 1;
-    if (card > 1){
-        card = card - 1;
+    int i = 0;
+    while(i++ < 5){
+        continue;
+        i = 1;
     }
 }
