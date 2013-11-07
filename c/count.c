@@ -66,11 +66,10 @@ int main(int argc, char *argv[])
 	 * each one associated with the numerically corresponding ASCII key.
 	 * e.g. ascii[97] is 'a', ascii[98] is 'b' and so on...
 	 *
-	 * Note: ASCII table itself is 128-char long, but we account for the
-	 * extended ASCII codes. I don't know if this will be really required,
-	 * but... better safe than sorry.
+	 * Note: ASCII table itself is 128-char long, I don't account for any
+	 * extended character set.
 	 */
-	int ascii[256];
+	int ascii[128];
 	int i;
 	int n_vowels = 0;
 	int n_spaces = 0;
@@ -78,7 +77,7 @@ int main(int argc, char *argv[])
 	int n_digits = 0;
 
 	/* Set ascii[] values to 0 */
-	for(i = 0; i < 256; i++) {
+	for(i = 0; i < 127; i++) {
 		ascii[i] = 0;
 	}
 
@@ -95,30 +94,32 @@ int main(int argc, char *argv[])
 	while (fgets(line, 100, input)){
 		i = 0;
 		while (line[i] != '\0'){
+			if ((unsigned char) line[i] <= 127) {
+				/* Increment the counter associated with the currently read char.
+				 * (unsigned char) is a double-check for robustness, since we
+				 * already know line[i] is between 0 and 127.
+				 */
+				ascii[(unsigned char) line[i]]++;
 
-			/* Increment the counter associated with the currently read char.
-			 * (int) is an explicit cast to make the compiler happy.
-			 */
-
-			ascii[(int) line[i]]++;
-
-			if (is_vowel(line[i])) {
-				fprintf(o_vowels, "%c", line[i]);
-				n_vowels++;
-			} else if (is_space(line[i])) {
-				n_spaces++;
-			} else if (is_consonant(line[i])) {
-				fprintf(o_consonants, "%c", line[i]);
-				n_consonants++;
-			} else if (is_digit(line[i])) {
-				fprintf(o_digits, "%c", line[i]);
-				n_digits++;
+				if (is_vowel(line[i])) {
+					fprintf(o_vowels, "%c", line[i]);
+					n_vowels++;
+				} else if (is_space(line[i])) {
+					n_spaces++;
+				} else if (is_consonant(line[i])) {
+					fprintf(o_consonants, "%c", line[i]);
+					n_consonants++;
+				} else if (is_digit(line[i])) {
+					fprintf(o_digits, "%c", line[i]);
+					n_digits++;
+				}
 			}
 			i++;
 		}
 	}
+	puts("foo");
 	fprintf(o_summary, "Totale: %i\nVocali: %i\nSpazi: %i\nConsonanti: %i\nCifre: %d\n\n",
-			n_vowels + n_spaces + n_consonants, n_vowels, n_spaces, n_consonants, n_digits);
+			n_vowels + n_spaces + n_consonants + n_digits, n_vowels, n_spaces, n_consonants, n_digits);
 
 	fprintf(o_summary, "Conteggio dei caratteri (simboli inclusi):\n");
 
@@ -126,7 +127,7 @@ int main(int argc, char *argv[])
 	 * (symbols, newlines, unprintable characters...) */
 	for (i = 33; i < 127; i++) {
 		if (ascii[i] > 0)
-			fprintf(o_summary, "%c -> %i\n", i, ascii[i]);
+			fprintf(o_summary, "%c -> %i\n", (char) i, ascii[i]);
 	}
 
 	fclose(input);

@@ -1,15 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(){
-    long int max = 1073741824;
-    printf("%ld\n", max);
+char foo[10];
 
-    char *foo;
-    long int i;
-    foo = (char*) malloc(max * sizeof(char));
-    for(i = 0; i < max; i++){
-        foo[i] = 1;
+int main(){
+    char *array[] = {"Foo", "Bar", "Baz"};
+
+    foo[0] = 'a';
+
+    char *ptr = foo - 10;
+    int i;
+
+    for (i = 0; i < 20; i++)
+    {
+        printf("Addr: %p, val: %d\n", ptr + i, *(ptr + i));
     }
-    getchar();
+
+    printf("Addr of foo: %p\n", foo);
+    printf("Addr of array[0]: %p\n", array[0]);
+    return 0;
 }
