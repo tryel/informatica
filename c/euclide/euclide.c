@@ -28,8 +28,6 @@ void print_row(int n, int mem_table[3][5])
 
 int MCD(int n1, int n2, int mem_table[3][5], int *x, int *y)
 {
-    int i, j;
-
     /* Fill the first two rows */
     mem_table[0][3] = 1;
     mem_table[1][0] = n1;
@@ -50,7 +48,6 @@ int MCD(int n1, int n2, int mem_table[3][5], int *x, int *y)
 
     int *a = &mem_table[2][0];
     int *b = &mem_table[2][1];
-    int *q = &mem_table[2][2];
     int *s = &mem_table[2][3];
     int *t = &mem_table[2][4];
 
@@ -66,12 +63,10 @@ int MCD(int n1, int n2, int mem_table[3][5], int *x, int *y)
         *s = *s2 - (*q1) * (*s1);
         *t = *t2 - (*q1) * (*t1);
 
-        /* Uncomment to debug the algorithm
-         * print_row(0, mem_table);
-         * print_row(1, mem_table);
-         * print_row(2, mem_table);
-         * printf("\n-----------------\n");
-        */
+        /* print_row(0, mem_table);
+        print_row(1, mem_table);
+        print_row(2, mem_table);
+        printf("\n-----------------\n"); */
 
         shift_up(mem_table);
     }
