@@ -16,8 +16,7 @@ int main ()
 {
 	struct student s; /* Declare a struct of type student named s */
 
-	char n;
-	n = 'a';
+	char n[2];
 	FILE *output = fopen("output.txt", "w");
 
 	printf("Input the following variables: name:\n");
@@ -35,14 +34,15 @@ int main ()
 	s.name, s.surname, s.identif_n, s.n_exams, s.mark);
 
 	printf("Are you graduate?"); /* This is ok... I think... */
-	scanf("%c", &n);
+	scanf("%s", n);
 
+	printf("%s", n);
 
-	while (n != 'y') { {
+	while (n[0] != 'y') {
 		printf("have you done other exams? ");
-		scanf("%c", &n);
-		if (n == 'y')
-			s.n_exam++;
+		scanf("%s", n);
+		if (n[0] == 'y')
+			s.n_exams++;
 	}
 	fclose(output);
 	return 0;
